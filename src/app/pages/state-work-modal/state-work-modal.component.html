@@ -1,0 +1,22 @@
+<div mat-dialog-title class="dialog-title-center">
+    <h1>Estados de trabajo</h1>
+</div>
+<mat-dialog-content class="padding-dialog-content dialog-content-250">
+    <mat-card>
+        <form [formGroup]="stateWorkForm" novalidate>
+            <mat-form-field class="auth-input" appearance="outline" floatLabel="always">
+                <mat-label>Nombre del Estado de Trabajo</mat-label>
+                <input class="form-control" matInput formControlName="state_work"
+                maxlength="20">
+                <mat-error *ngIf="stateWorkForm.controls['state_work'].hasError('minlength')">
+                    Campo debe tener <strong>mínimo 5 caracteres</strong>
+                </mat-error>
+            </mat-form-field>
+        </form>
+    </mat-card>
+</mat-dialog-content>
+<mat-dialog-actions class="buttons-center">
+    <button mat-raised-button mat-dialog-closestyle="color: white; background-color: #CA6F1E ;">Cancelar</button>
+    <button mat-raised-button style="color: white; background-color: black;"
+    (click)="saveStateWork(stateWorkForm.value)">Guardar</button>
+</mat-dialog-actions>

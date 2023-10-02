@@ -1,0 +1,70 @@
+<div class="main-page">
+    <mat-card class="main-card">
+        <mat-card-header class="main-card-header">
+            <h1 class="h1-not-margin">Trabajos Inconclusos</h1>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-form-field class="main-search" appearance="fill">
+            <mat-label>Buscar</mat-label>
+            <input class="form-control" matInput maxlength="20">
+            <mat-icon matSuffix> search </mat-icon>
+            <!-- <mat-error *ngIf="loginForm.controls['username'].hasError('minlength')">
+                Campo debe tener <strong>mínimo 5 caracteres</strong>
+            </mat-error> -->
+        </mat-form-field>
+        <button (click)="getAllWork()" style="margin-left: 10px; color: white; background-color: black ;" mat-raised-button>
+          <mat-icon matSuffix style="color: white;"> refresh </mat-icon>
+      </button>
+        <mat-card-content>
+            <div class="main-table-container mat-elevation-z1">
+                <div class="main-table-overflow">
+                    <table class="main-table" mat-table [dataSource]="dataSource">
+
+                        <ng-container matColumnDef="type_work">
+                          <th mat-header-cell *matHeaderCellDef> Tipo de Trabajo </th>
+                          <td mat-cell *matCellDef="let element"> {{element.type_work.type_work}} </td>
+                        </ng-container>
+    
+                        <ng-container matColumnDef="equipment_facilities">
+                          <th mat-header-cell *matHeaderCellDef> Equipo o Instalación </th>
+                          <td mat-cell *matCellDef="let element"> {{element.equipment_facility.name}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="state_work">
+                          <th mat-header-cell *matHeaderCellDef> Estado de Trabajo </th>
+                          <td mat-cell *matCellDef="let element"> {{element.state_work.state_work}} </td>
+                        </ng-container>
+    
+                        <ng-container matColumnDef="description">
+                          <th mat-header-cell *matHeaderCellDef> Descripción </th>
+                          <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+                        </ng-container>
+    
+                        <ng-container matColumnDef="action">
+                          <th mat-header-cell *matHeaderCellDef> Acción </th>
+                          <td mat-cell *matCellDef="let element">
+                            <div class="action-table-two">
+                              <mat-icon matTooltip="Editar" (click)="openEditWork(element)" class="icon-action"> edit </mat-icon>
+                              <mat-icon matTooltip="Eliminar" (click)="deleteWork(element)" class="icon-action"> delete </mat-icon>
+                            </div>
+                          </td>
+                        </ng-container>
+                    
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true;"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        <tr *matNoDataRow>
+                          <td [attr.colspan]="displayedColumns.length">
+                              No hay trabajos registrados
+                          </td>
+                      </tr>
+                      </table>
+                </div>
+                <mat-paginator class="main-paginator" [pageSizeOptions]="[5, 10, 20]"
+                    [ngClass]="{'paginator-border': works.length === 0}"
+                    showFirstLastButtons
+                    aria-label="Select page of periodic elements">
+                </mat-paginator>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

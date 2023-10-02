@@ -1,0 +1,56 @@
+<div mat-dialog-title class="dialog-title-center">
+    <h1>Equipamientos e Instalaciones</h1>
+</div>
+<mat-dialog-content class="padding-dialog-content">
+    <mat-card>
+        <form [formGroup]="equipmentFacilitiesForm" novalidate>
+            <mat-form-field class="auth-input" appearance="outline" floatLabel="always">
+                <mat-label>Nombre</mat-label>
+                <input class="form-control" matInput formControlName="name"
+                maxlength="20">
+                <mat-error *ngIf="equipmentFacilitiesForm.controls['name'].hasError('minlength')">
+                    Campo debe tener <strong>mínimo 5 caracteres</strong>
+                </mat-error>
+            </mat-form-field>
+            <div class="input-with-action">
+                <mat-form-field class="auth-input" appearance="outline" floatLabel="always">
+                    <mat-label>Casa</mat-label>
+                    <mat-select formControlName="id_floor" required placeholder="Seleccione una casa">
+                        <mat-option *ngFor="let floor of floors" [value]="floor.id">
+                          {{floor.floor}}
+                        </mat-option>
+                      </mat-select>
+                    <!-- <mat-error *ngIf="equipmentFacilitiesForm.controls['name'].hasError('minlength')">
+                        Campo debe tener <strong>mínimo 5 caracteres</strong>
+                    </mat-error> -->
+                    <!-- <div matSuffix>
+                        <button mat-raised-button color="primary">
+                            <mat-icon style="color: white;"> add </mat-icon>
+                        </button>
+                    </div> -->
+                </mat-form-field>
+                <div class="action-input">
+                    <button (click)="openAddFloor()" mat-mini-fab style="margin-left: 10px;color: white; background-color: black ;">
+                        <mat-icon style="color: white;"> add </mat-icon>
+                    </button>
+                </div>
+            </div>
+            <mat-form-field class="auth-input" appearance="outline" floatLabel="always">
+                <mat-label>Descripción</mat-label>
+                <textarea class="form-control textarea-input" matInput formControlName="description"
+                maxlength="300" placeholder="Ingrese una descripción del equipamiento o instalación"></textarea>
+                <mat-error *ngIf="equipmentFacilitiesForm.controls['description'].hasError('minlength')">
+                    Campo debe tener <strong>mínimo 5 caracteres</strong>
+                </mat-error>
+                <mat-error *ngIf="equipmentFacilitiesForm.controls['description'].hasError('required')">
+                    Campo es <strong>requerido</strong>
+                </mat-error>
+            </mat-form-field>
+        </form>
+    </mat-card>
+</mat-dialog-content>
+<mat-dialog-actions class="buttons-center">
+    <button mat-raised-button mat-dialog-close style="color: white; background-color: #CA6F1E ;">Cancelar</button>
+    <button mat-raised-button style="color: white; background-color: black;"
+    (click)="saveEquipmentFacilities(equipmentFacilitiesForm.value)">Guardar</button>
+</mat-dialog-actions>

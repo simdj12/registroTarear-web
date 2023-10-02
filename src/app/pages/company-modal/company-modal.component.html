@@ -1,0 +1,30 @@
+<div mat-dialog-title class="dialog-title-center">
+    <h1>Compañias</h1>
+</div>
+<mat-dialog-content class="padding-dialog-content dialog-content-250">
+    <mat-card>
+        <form [formGroup]="companyForm" novalidate>
+            <mat-form-field class="auth-input" appearance="outline" floatLabel="always">
+                <mat-label>Nombre de la compañia</mat-label>
+                <input class="form-control" matInput formControlName="company_name"
+                maxlength="20">
+                <mat-error *ngIf="companyForm.controls['company_name'].hasError('minlength')">
+                    Campo debe tener <strong>mínimo 5 caracteres</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="auth-input" appearance="outline" floatLabel="always">
+                <mat-label>Telefono de contacto</mat-label>
+                <input class="form-control" matInput formControlName="contact_phone"
+                maxlength="20">
+                <mat-error *ngIf="companyForm.controls['contact_phone'].hasError('minlength')">
+                    Campo debe tener <strong>mínimo 5 caracteres</strong>
+                </mat-error>
+            </mat-form-field>
+        </form>
+    </mat-card>
+</mat-dialog-content>
+<mat-dialog-actions class="buttons-center">
+    <button mat-raised-button mat-dialog-close style="color: white; background-color: #CA6F1E ;">Cancelar</button>
+    <button mat-raised-button style="color: white; background-color: black;"
+    (click)="saveCompany(companyForm.value)">Guardar</button>
+</mat-dialog-actions>

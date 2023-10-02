@@ -1,0 +1,75 @@
+<mat-sidenav-container autosize style="height: 100vh;">
+    <mat-sidenav [opened]="opened" mode="side">
+        <mat-toolbar class="toolbar-title">
+            <img style="height: 300%; margin-top: 10px;" src="../../../../assets/img/CG.png" alt="">
+        </mat-toolbar>
+        <mat-accordion>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title class="sidenav-title">
+                  <mat-icon>settings</mat-icon>
+                  <span>Configuraciones</span>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              
+              <div (click)="goTo('equipment_facilities')" mat-raised-button class="button-sidenav">
+                <li>Equipamientos e Instalaciones</li>
+              </div>
+              
+              <div (click)="goTo('floor')" mat-raised-button class="button-sidenav">
+                <li>Casas</li>
+              </div>
+              
+              <div (click)="goTo('company')" mat-raised-button class="button-sidenav">
+                <li>Compañias</li>
+              </div>
+
+              <div (click)="goTo('responsible')" mat-raised-button class="button-sidenav">
+                <li>Responsables</li>
+              </div>
+
+              <div (click)="goTo('type_work')" mat-raised-button class="button-sidenav">
+                <li>Tipos de Trabajo</li>
+              </div>
+
+              <div (click)="goTo('state_work')" mat-raised-button class="button-sidenav">
+                <li>Estados de Trabajo</li>
+              </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title class="sidenav-title">
+                  <mat-icon>work</mat-icon>
+                  <span>Trabajos</span>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              
+              <div (click)="goTo('work')" mat-raised-button class="button-sidenav">
+                <li>Todos los Trabajos</li>
+              </div>
+
+              <div (click)="goTo('work_done')" mat-raised-button class="button-sidenav">
+                <li>Trabajos Completados</li>
+              </div>
+
+              <div (click)="goTo('work_undone')" mat-raised-button class="button-sidenav">
+                <li>Trabajos Inconclusos</li>
+              </div>
+              
+            </mat-expansion-panel>
+          </mat-accordion>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar>
+            <button (click)="onSideNav()" mat-icon-button>
+              <mat-icon style="color: black;">menu</mat-icon>
+            </button>
+            <img *ngIf="opened === false" style="height: 300%; margin-top: 30px;" src="../../../../assets/img/CalleG.png" alt="">
+            <span class="example-spacer"></span>
+            <button (click)="logout()" mat-icon-button class="example-icon favorite-icon">
+                <mat-icon style="color: black;">logout</mat-icon>
+            </button>
+        </mat-toolbar>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

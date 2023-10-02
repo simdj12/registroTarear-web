@@ -1,0 +1,41 @@
+<div class="main-auth">
+    <div class="auth-img">
+        <div class="auth-bg">
+            <img class="logo-auth" src="../../../../assets/img/CG.png" alt="">
+        </div>
+    </div>
+    <form [formGroup]="loginForm" class="auth-form" novalidate>
+        <div class="auth-title">
+            <h1>Registro</h1>
+        </div>
+        <div class="auth-inputs">
+            <mat-form-field class="auth-input" appearance="outline">
+                <mat-label>Usuario</mat-label>
+                <input class="form-control" matInput formControlName="username"
+                maxlength="20">
+            </mat-form-field>
+            <mat-form-field class="auth-input" appearance="outline">
+                <mat-label>Correo Electrónico</mat-label>
+                <input class="form-control" matInput formControlName="email"
+                maxlength="20">
+            </mat-form-field>
+            <mat-form-field class="auth-input" appearance="outline">
+                <mat-label>Contraseña</mat-label>
+                <input class="form-control" matInput formControlName="password"
+                type="password" maxlength="16">
+            </mat-form-field>
+            <mat-form-field class="auth-input" appearance="outline">
+                <mat-label>Confirmar Contraseña</mat-label>
+                <input class="form-control" matInput formControlName="confirmPassword"
+                type="password" maxlength="16">
+            </mat-form-field>
+        </div>
+        <div class="auth-button-container">
+            <button class="auth-button" mat-raised-button color="primary">Registrarse</button>
+        </div>
+        <div class="auth-text">
+            <!-- <p>¿No recuerdas tu contraseña? <a href="#">Recuperar contraseña</a></p> -->
+            <p>¿Ya tienes cuenta? <a href="/login">Inicia sesión aquí</a></p>
+        </div>
+    </form>
+</div>
