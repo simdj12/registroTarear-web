@@ -4,7 +4,7 @@
             <img class="logo-auth" src="../../../../assets/img/CG.png" alt="">
         </div>
     </div>
-    <form [formGroup]="loginForm" class="auth-form" novalidate>
+    <form [formGroup]="registerForm" class="auth-form" novalidate>
         <div class="auth-title">
             <h1>Registro</h1>
         </div>
@@ -31,7 +31,7 @@
             </mat-form-field>
         </div>
         <div class="auth-button-container">
-            <button class="auth-button" mat-raised-button color="primary">Registrarse</button>
+            <button [disabled]="!registerForm.valid" class="auth-button" mat-raised-button color="primary" (click)="register(registerForm.value)">Registrarse</button>
         </div>
         <div class="auth-text">
             <!-- <p>¿No recuerdas tu contraseña? <a href="#">Recuperar contraseña</a></p> -->
